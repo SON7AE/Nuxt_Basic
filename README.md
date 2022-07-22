@@ -11,9 +11,22 @@
 ## 3. AsyncData
 
 - asyncData 메서드의 정의
-  asyncData 메서드는 Page Components에서만 사용이 가능하며 비동기 처리에 의해 얻어진 데이터를 SSR(Server Side Rendering)하기 위해 사용되는 훅이다.
-  첫 번째 Parameter로 context가 온다. asyncData는 컴포넌트에 데이터를 셋팅하는 것을 목적으로 사용된다.
+  asyncData 메서드는 Page Components에서만 사용이 가능하며 비동기 처리에 의해 얻어진 데이터를 SSR(Server Side Rendering)하기 위해 사용되는 훅이다. <br />
+  첫 번째 Parameter로 context가 온다. asyncData는 컴포넌트에 데이터를 셋팅하는 것을 목적으로 사용된다. <br />
   따라서 asyncData에 의해 반환된 값은 컴포넌트의 템플릿에서 접근이 가능하다.
 
 - `npm install @nuxtjs/axios`
 - nuxt.config.js 파일 안에 `modules: ['@nuxtjs/axios']`를 추가한다.
+
+## 4. fetch
+
+- 모든 컴포넌트에서 사용가능하며, fetch 는 비동기 처리에 의해 얻어진 데이터를 SSR하기 위해 사용되는 훅이다. <br />
+  asyncData와 달리 this에 접근가능하다. 대신 parameter는 넘기지 못하다는 것이 차이점이다.
+  `v2.12이후 deprecated`
+- fetch 상태정보를 가져올 수 있는 $fetchState
+
+  - $fetchState의 요소
+
+    - pending : Boolean. fetch가 클라이언트 사이드에서 사용될 때, place-holder를 표시하기 위한 용도
+    - error : null. 에러 메서지를 표시하는 용도
+    - timestamp : Integer형태 마지막으로 fetch가 불려진 시간 keep-alive를 이용해 캐시정책에 이용
